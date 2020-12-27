@@ -92,6 +92,7 @@ namespace HomeWorkForms_2
                 if (thousandsRB.Checked) { Result = Result - 1000; }
             }
             PrintResult();
+            123
         }
     }
 }
