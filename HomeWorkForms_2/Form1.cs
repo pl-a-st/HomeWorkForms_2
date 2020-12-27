@@ -19,7 +19,7 @@ namespace HomeWorkForms_2
         /// <summary>
         ////Результат
         /// </summary>
-        public double Result
+        public int Result
         { get; private set;}
         /// <summary>
         ///Вывести результат 
@@ -77,22 +77,31 @@ namespace HomeWorkForms_2
 
         private void moreOrLessBt_Click(object sender, EventArgs e)
         {
-            if(moreOrLessChB.Checked)
+            int addToResul=0;
+            if (unitsRB.Checked) { addToResul = 1; }
+            if (tensRB.Checked) { addToResul = 10; }
+            if (hundredsRB.Checked) { addToResul = 100; }
+            if (thousandsRB.Checked) { addToResul = 1000; }
+            CalculateResult(addToResul, moreOrLessChB.Checked);
+            PrintResult();
+
+        }
+        /// <summary>
+        //// Расчитать результат по переданным параметрам
+        /// </summary>
+        /// <param name="addToResult">Значение добавляемое или вычетаемое из результата</param>
+        /// <param name="moreOrLess">Елси true, то addToResultaddToResult будет прибавлен к результату, если false, то вычтен</param>
+        private void CalculateResult(int addToResult,bool moreOrLess)
+        {
+            if (moreOrLess)
             {
-                if (unitsRB.Checked) { Result++; }
-                if (tensRB.Checked) { Result = Result + 10;}
-                if (hundredsRB.Checked) { Result = Result + 100; }
-                if (thousandsRB.Checked) { Result=Result + 1000; }
+                Result = Result + addToResult;
             }
             else
             {
-                if (unitsRB.Checked) { Result--; }
-                if (tensRB.Checked) { Result = Result - 10; }
-                if (hundredsRB.Checked) { Result = Result - 100; }
-                if (thousandsRB.Checked) { Result = Result - 1000; }
+                Result = Result - addToResult;
             }
-            PrintResult();
-            123
+            
         }
     }
 }
